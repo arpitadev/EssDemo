@@ -254,7 +254,7 @@ export class DashboardComponent implements OnInit {
     var min = 0;
     timeSheetList.find((data: any, i: string | number) => {
       if (
-        data.date === formatDate(value['dateTs'], 'MM/dd/yyyy', this.locale)
+        data.dateTs === formatDate(value['dateTs'], 'MM/dd/yyyy', this.locale)
       ) {
         data.record.forEach((tsData: any) => {
           if (tsData.id === value.id) {
