@@ -1,0 +1,681 @@
+<div class="row " style="margin: auto;">
+  <div class="col-sm-1"></div>
+  <div class="col-sm-10" style="width: fit-content; margin: auto;">
+    <table table width="100%">
+      <tr>
+        <td>
+          <div class="logo mt-4 mb-3" style="background-color: transparent;">
+            <img src="../../assets/winjitLogo.png" alt="Winjit Logo">
+          </div>
+        </td>
+
+      </tr>
+      <tr>
+        <td colspan="12">
+          <table width="100%">
+            <tr>
+              <div class="table-data table-row" style="width: 100%;margin: 0px !important;">
+                <td class="table-cell table-row">
+                  <span>
+                    Home <span class="verticalLine"></span>
+                  </span>
+                  <span class="dropdown">
+                    <button type="button" id="Timesheet" data-bs-toggle="dropdown" aria-expanded="false"
+                      class="buttonStyle">
+                      Timesheet
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="Timesheet">
+                      <li><a class="dropdown-item" href="#">Timesheeet</a></li>
+                      <li><a class="dropdown-item" href="#">Bulk Timesheet</a></li>
+
+                    </ul>
+
+                    <span class="verticalLine"></span>
+                  </span>
+                  <span class="dropdown">
+                    <button type="button" id="Leave" data-bs-toggle="dropdown" aria-expanded="false"
+                      class="buttonStyle">
+                      Leave Management
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="Timesheet">
+                      <li><a class="dropdown-item" href="#">Leave Request</a></li>
+                      <li><a class="dropdown-item" href="#">Leave History</a></li>
+
+                    </ul>
+
+                    <span class="verticalLine"></span>
+                  </span>
+
+                  <span>
+                    Posco
+                    <span class="verticalLine"></span>
+                  </span>
+
+                  <span>
+                    Forms and Docs
+                    <span class="verticalLine"></span>
+                  </span>
+
+                  <span>
+                    PaySquare
+                  </span>
+                </td>
+              </div>
+              <td style="border: 0px;" style="width: 30%;">
+            <tr>
+              <td></td>
+              <td class="name " style="width: 90%;" align="right">
+                <span> Hi ARPITA ANIL <br> DEVARGAONKAR! </span>
+              </td>
+              &nbsp;
+              <td class="icon" style="width: 10%;">
+                <img style="width:25px;" src="../../assets/settings.png" alt="Settings">
+              </td>
+
+            </tr>
+        </td>
+
+      </tr>
+    </table>
+    </td>
+
+    </tr>
+    <tr>
+      <td>
+        <table border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
+          <tr>
+            <td style="width: 78%;">
+              <div style=" border: 1px solid rgb(46, 46, 46); width: 100%;" class="mt-2 mb-3">
+                <form [formGroup]="timeSheet" class="form-validate " role="form" name="timeSheetForm"
+                  (submit)="submitForm($event, timeSheet.value)" style="padding: 10px; padding-bottom: 0%">
+                  <table style=" border-collapse: separate;" width="100%">
+                    <tr>
+                      <td colspan="5">
+                        <h1 style="text-align: center; font-family: Arial;
+                        font-size: 25px;
+                        font-weight: bold;
+                        padding: 0px;
+                        margin: 0px;
+                        " class="mb-4">Timesheet</h1>
+                      </td>
+
+
+                    </tr>
+                    <tr>
+                      <td valign="center">
+                        <span class="fontStyle">Employee</span>
+                      </td>
+                      <td valign="center" colspan="4">
+                        <input type="text" style="width:350px;" class="mb-2" id="employee" name="employee" autofocus
+                          autocomplete="off" formControlName="employee" required="" />
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td valign="top">
+                        <span class="fontStyle">Project</span>
+                      </td>
+                      <td valign="top" colspan="4">
+                        <div>
+                          <span>
+                            <select autofocus name="project" type="project" style="width:350px;" class="mb-2"
+                              name="project" formControlName="project">
+
+                              <optgroup>
+                                <option selected [value]="null">--- Select---</option>
+                                <option *ngFor="let project of projectList" [value]="project">{{project}}</option>
+                              </optgroup>
+                            </select>
+                            <span class="text-danger"
+                              *ngIf="submitted && timeSheet.controls['project'].hasError('required')">
+                              &nbsp;*</span>
+                          </span>
+
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td valign="top">
+                        <span class="fontStyle">Activity</span>
+                      </td>
+                      <td valign="top" colspan="4">
+                        <div class="form-group">
+                          <span>
+                            <select autofocus name="activity" type="activity" style="width:350px;" class="mb-2"
+                              name="activity" formControlName="activity">
+                              <optgroup>
+                                <option selected [value]="null">--- Select---</option>
+                                <option *ngFor="let activity of activityList" [value]="activity">{{activity}}</option>
+                              </optgroup>
+                            </select>
+                            <span class="text-danger"
+                              *ngIf="submitted && timeSheet.controls['activity'].hasError('required')">
+                              &nbsp;*</span>
+                          </span>
+
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td valign="top">
+                        <span class="fontStyle">Date</span>
+                      </td>
+                      <td valign="center">
+                        <input type="text" style="width:200px;" class="mb-2" id="dateTs" name="dateTs"
+                          placeholder="dateTs" onfocus="(this.type='date')" value="dateTs" autofocus autocomplete="off"
+                          formControlName="dateTs" required="" />
+                      </td>
+                      <td valign="center" colspan="3">
+                        <span class="fontStyle">Tag&nbsp;</span>
+                        <input type="text" style="width:200px;" class="mb-2" id="tag" name="tag" autofocus
+                          autocomplete="off" formControlName="tag" />&nbsp;&nbsp;
+                        <img style="width:26px;" src="../../assets/info.png" alt="Info"
+                          title="This is an optional field as all projects may not have this field. You can enter your service desk number, bug id, mantis id etc. It is required while sending timesheets to client">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td valign="top">
+                        <div class="fontStyle">Time Spent (hh:mm)
+                        </div>
+
+                      </td>
+                      <td valign="center">
+                        <table cellpadding="0" cellspacing="0">
+                          <tr>
+                            <td>
+                              <div class="form-group">
+                                <span>
+                                  <input type="number" style="width:40px;" class="mb-2" id="hour" name="hour" autofocus
+                                    autocomplete="off" formControlName="hour" required="" min="0" max="3" />
+                                  <img style="width: 20px;" src="../../assets/arrowUp.png" alt="Up"
+                                    (click)="changeHour('+')">
+                                  <img style="width: 20px;" src="../../assets/arrowDown.png" alt="Down"
+                                    (click)="changeHour('-')">
+                                </span>
+                              </div>
+                            </td>
+                            <td>
+                              :&nbsp;
+                            </td>
+                            <td>
+                              <div class="form-group">
+                                <span>
+                                  <input type="number" style="width:40px;" class="mb-2" id="min" name="min" autofocus
+                                    autocomplete="off" formControlName="min" required="" min="0" max="59" />
+                                  <img style="width: 20px;" src="../../assets/arrowUp.png" alt="Up"
+                                    (click)="changeMin('+')">
+                                  <img style="width: 20px;" src="../../assets/arrowDown.png" alt="Down"
+                                    (click)="changeMin('-')">
+
+                                </span>
+                              </div>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+
+                      <td colspan="2">
+                        <div class="text-danger"
+                          *ngIf="submitted && timeSheet.controls['hour'].hasError('min') ||  timeSheet.controls['hour'].hasError('max')">
+                          Please enter hour in between 0 - 3
+                        </div>
+                        <div class="text-danger"
+                          *ngIf="submitted && timeSheet.controls['min'].hasError('max') || timeSheet.controls['min'].hasError('min')">
+                          Please enter minute in between 0 - 59
+                        </div>
+                      </td>
+                      <td valign="center" colspan="2">
+                        <input type="checkbox" class="mb-2" id="onSiteTS" name="onSiteTS" autofocus autocomplete="off"
+                          formControlName="onSiteTS" />
+                        <span class="fontStyle">Onsite Timesheet </span>
+                        <img style="width:20px; vertical-align:top;" src="../../assets/info.png" alt="Info"
+                          title="This field of timesheet is required to be checked if Onsite">
+
+                      </td>
+
+                    </tr>
+                    <tr>
+                      <td valign="center">
+                        <span class="fontStyle">Description</span>
+                      </td>
+                      <td valign="center" colspan="12">
+                        <div class="form-group">
+                          <textarea style="resize: none; width: 90%;" name="description" id="description" cols="50"
+                            rows="3" autofocus autocomplete="off" formControlName="description" required=""></textarea>
+                        </div>
+                        <div class="text-danger"
+                          *ngIf="submitted && timeSheet.controls['description'].hasError('required')">
+                          Please enter description
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+
+                      </td>
+                      <td valign="center" colspan="3">
+                        <button style="font-size: medium;" type="submit">{{isSave}}</button>
+                        <button class="m-2" style="font-size: medium;" (click)="clearForm()">Cancel</button>
+                        <button style="font-size: medium;">Old Entries</button>
+                      </td>
+                      <td valign="center" colspan="2">
+                        <span style="padding: 0%;">
+                          <div class="text-danger"
+                            *ngIf="submitted && timeSheet.controls['hour'].hasError('required') ||  timeSheet.controls['min'].hasError('required')">
+                            Please Select Time spent (hh:mm)
+                          </div>
+                          <div class="text-danger" *ngIf="submitted && validDate">
+                            You can fill timesheet for current week only.
+                          </div>
+                          <div class="text-danger" *ngIf="submitted && isFuture">
+                            You can not select future date.
+                          </div>
+                          <div class="text-danger" *ngIf="submitted && validTime">
+                            You can fill timesheet for 14 hours/day only.
+                          </div>
+                          <div style="font-size: large; font-weight: bold;" *ngIf="submitted && isUpdated">
+                            Timesheet entry saved successfully.
+                          </div>
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+
+                      </td>
+                      <td colspan="4">
+                        <div style="font-size: medium ; color: orange">
+                          <b>* Please fill timesheet in between 0 to 3 hours for each entry. </b>
+                        </div>
+                        <div style="font-size: medium; color: orange">
+                          <b>* Minimum 3 entries are required to complete 8 hours timesheet for the day.</b>
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                </form>
+                <div style="padding: 1%">
+                  <table
+                    style=" border: 1px solid rgb(82, 184, 209); background: linear-gradient(to bottom,rgb(218, 234, 241) ,rgb(181, 215, 231) , rgb(202, 233, 235),rgb(202, 233, 235) ) repeat; "
+                    width="100%">
+                    <thead>
+                      <tr>
+                        <th style="padding: 7px;">
+                          <button style="
+                            background-color: transparent; 
+                            border: 1px soild rgb(85, 221, 255) !important;
+                            color: #283B56;
+                            padding: 5px 10px;
+                            font-size: 16px;
+                            display: flex;" (click)="sortByDate()">Date <i class="bi bi-caret-down-fill"></i> </button>
+                        </th>
+                      </tr>
+                      <tr style="text-align: center;">
+                        <th style="width: 2%; border: 1px solid rgb(82, 184, 209) ;">
+
+                        </th>
+                        <th style="width: 6%; border: 1px solid rgb(82, 184, 209) ;">
+
+                        </th>
+                        <th style="width: 7%; " class="headCss">
+                          Edit
+                        </th>
+                        <th style="width: 15%; " class="headCss">
+                          Project
+                        </th>
+                        <th style="width: 15%; " class="headCss">
+                          Activity
+                        </th>
+                        <th style="width: 15%; " class="headCss">
+                          Approved By
+                        </th>
+                        <th style="width: 10%; " class="headCss">
+                          Time
+                        </th>
+                        <th style="width: 20%; " class="headCss">
+                          Description
+                        </th>
+                        <th style="width: 2%; " class="headCss">
+                          Tag
+                        </th>
+                      </tr>
+                      <tr style="border : 1px solid rgb(82, 184, 209) ;width: 100%;">
+                        <td style="width: 2%;">
+
+                        </td>
+                        <td style="width: 6%;">
+
+                        </td>
+                        <td style="width: 7%; ">
+
+                        </td>
+                        <td style="width: 10%; padding: 2px;">
+                          <input style="width: 100%; " [(ngModel)]="searchData" (ngModelChange)="searchRecord()"
+                            type="text">
+                        </td>
+                        <td style="width: 15%; padding: 2px;">
+                          <input style="width: 100%;" type="text">
+                        </td>
+                        <td style="width: 15%; padding: 2px;">
+                          <input style="width: 100%;" type="text">
+                        </td>
+                        <td style="width: 10%; padding: 2px;">
+                          <input style="width: 100%;" type="text">
+                        </td>
+                        <td style="width: 20%; padding: 2px;">
+                          <input style="width: 100%;" type="text">
+                        </td>
+                        <td style="width: 5%; padding: 2px;">
+                          <input style="width: 100%;" type="text">
+                        </td>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr>
+                        <td colspan="12">
+                          <table
+                            *ngFor="let data of timeSheetList | paginate: { id : 'pages', itemsPerPage: 5, currentPage: page, totalItems: total }"
+                            style="border-bottom : 1px solid rgb(82, 184, 209) ;width: 100%;">
+                            <tr>
+                              <td colspan="12" (click)="expandRow(data)">
+                                <span *ngIf="!data.isExpanded"><img src="../../assets/expand.png" alt="Expand"> </span>
+                                <span *ngIf="data.isExpanded"><img src="../../assets/collapse.png" alt="Expand"> </span>
+                                Date:
+                                {{data.dateTs}}
+                              </td>
+                            </tr>
+                            <div *ngIf="data.isExpanded">
+                              <tr *ngFor="let records of data.record" style="background-color: white;">
+                                <td class="font" style="width: 11%;  background-color: rgb(202, 233, 235);">
+
+                                </td>
+                                <td class="font" style="width: 4%;  border: 1px solid rgb(82, 184, 209)">
+
+                                </td>
+                                <td class="font"
+                                  style="border: 1px solid rgb(30, 165 , 199) ;width: 2%;  text-align: left">
+                                  <button style="background-color: transparent; border: 0; color: rgb(26, 135, 224);"
+                                    (click)="editTS(records)">
+                                    Edit</button>
+                                </td>
+                                <td class="font"
+                                  style="width: 7%;  text-align: left;border: 1px solid rgb(82, 184, 209)">
+                                  <div style="width: 70px; word-wrap:break-word;"> {{records.project}}</div>
+                                </td>
+                                <td class="font"
+                                  style="width: 10%;  text-align: left;border: 1px solid rgb(82, 184, 209)">
+                                  <div style="width: 70px; word-wrap:break-word;">{{records.activity}}</div>
+                                </td>
+                                <td class="font"
+                                  style="width: 13%;  text-align: left;border: 1px solid rgb(82, 184, 209)">
+                                  Not Required
+                                </td>
+                                <td class="font"
+                                  style="width: 8%;  text-align: center;border: 1px solid rgb(82, 184, 209)">
+                                  {{records.time}}
+                                </td>
+                                <td class="font"
+                                  style="width: 10%;  text-align: left;border: 1px solid rgb(82, 184, 209)">
+                                  <div style="width: 100px; word-wrap:break-word;">{{records.description}}</div>
+                                </td>
+                                <td style="width: 7%;  text-align: left;border: 1px solid rgb(82, 184, 209)">
+                                  <div style="width: 100%;">
+
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr style="background-color: #e2ecfa; ">
+                                <td class="font" style="width: 11%; background-color: rgb(202, 233, 235);">
+
+                                </td>
+                                <td class="font" style="width: 4%;  border-left: 1px solid rgb(82, 184, 209) ; ">
+
+                                </td>
+                                <td class="font" style="width: 2%;  text-align: left ;">
+
+                                </td>
+                                <td class="font" style="width: 7%;  text-align: left;">
+
+                                </td>
+                                <td class="font" style="width: 10%;  text-align: left;">
+
+                                </td>
+                                <td class="font" style="width: 13%;  text-align: left;">
+
+                                </td>
+                                <td class="font" style="width: 8%;  text-align: center;">
+                                  {{data.totalTime}}
+                                </td>
+                                <td class="font" style="width: 10%;  text-align: left;">
+                                </td>
+                                <td class="font" style="width: 7%;  text-align: left; border-right: 1px solid #A3C0E8">
+
+                                </td>
+                              </tr>
+                            </div>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr style="height: 30px;  background-color: #e2ecfa; ;">
+                        <th style="width: 2%; ">
+
+                        </th>
+                        <th style="width: 6%; ">
+
+                        </th>
+                        <th style="width: 6%; font-weight: normal; font-size: medium;">
+
+                        </th>
+                        <th style="width: 15%; font-weight: normal; font-size: medium;">
+
+                        </th>
+                        <th style="width: 15%; font-weight: normal; font-size: medium;">
+
+                        </th>
+                        <th style="width: 15%; font-weight: normal; font-size: medium;">
+
+                        </th>
+                        <th style="width: 10%; font-weight: normal; font-size: medium; text-align: left;">
+                          {{totalTime}}
+                        </th>
+                        <th style="width: 20%; font-weight: normal; font-size: medium;">
+
+                        </th>
+                        <th style="width: 2%; font-weight: normal; font-size: medium;">
+
+                        </th>
+                      </tr>
+                      <tr
+                        style="background-color: linear-gradient(to bottom,rgb(218, 234, 241) ,rgb(181, 215, 231) , rgb(202, 233, 235),rgb(202, 233, 235) ) repeat;">
+                        <td colspan="3" style="width: 4%; font-size: 16px;">
+                          Page {{page}} of {{pageCount}} ({{total}} items)
+                        </td>
+                        <td colspan="3" style="width: 6%; ">
+                          <div class="mt-3">
+                            <pagination-controls style="size : 16px " id="pages" maxSize="5" directionLinks="true"
+                              (pageChange)="page = $event">
+                            </pagination-controls>
+                          </div>
+                        </td>
+                        <td style="width: 6%; font-weight: normal; font-size: medium;">
+
+                        </td>
+                        <td style="width: 15%; font-weight: normal; font-size: medium;">
+
+                        </td>
+                        <td style="width: 15%; font-weight: normal; font-size: medium;">
+
+                        </td>
+
+
+
+                      </tr>
+                    </tbody>
+                  </table>
+
+                </div>
+
+              </div>
+
+            </td>
+            <td style="width: 1%;"></td>
+            <td style="width: 21%;" valign="top">
+              <div style="border: 1px solid black; border-radius: 8px !important;" class="mt-2">
+                <table style="width: 90%; height: fit-content; margin: auto;">
+                  <tr class="fontStyle" align="center">
+                    <label for="theme" class="mt-3 mb-1">Select Theme:</label>
+                    <div class="form-group">
+                      <span>
+                        <select autofocus name="theme" type="theme" style="width:150px;" class="mb-4" name="theme">
+                          <optgroup>
+                            <option *ngFor="let theme of themeList" [value]="theme">{{theme}}</option>
+                          </optgroup>
+                        </select>
+                      </span>
+
+                    </div>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div style="background-color:  #F0F0F0;  border: 1px solid #A8A8A8; width: fit-content;"
+                        class="mb-3">
+                        <ul>
+                          <li class="labelData mb-1 mt-2">
+
+                            <div class="dropdown">
+                              <button type="button" id="Timesheet" data-bs-toggle="dropdown" aria-expanded="false"
+                                class="buttonStyle">
+                                <i class="bi bi-caret-right-fill"></i> Timesheet
+                              </button>
+                              <ul class="dropdown-menu" aria-labelledby="Timesheet">
+                                <li><a class="dropdown-item" href="#">Timesheeet</a></li>
+                                <li><a class="dropdown-item" href="#">Bulk Timesheet</a></li>
+
+                              </ul>
+                            </div>
+                          </li>
+                          <li class="labelData mb-1">
+
+                            <div class="dropdown">
+                              <button type="button" id="RFT" data-bs-toggle="dropdown" aria-expanded="false"
+                                class="buttonStyle">
+                                <i class="bi bi-caret-right-fill"></i> RFT
+                              </button>
+                              <ul class="dropdown-menu" aria-labelledby="RFT">
+                                <li><a class="dropdown-item" href="#">RFT Request</a></li>
+                                <li><a class="dropdown-item" href="#">RFT Response</a></li>
+
+                              </ul>
+                            </div>
+                          </li>
+                          <li class="labelData mb-1">
+
+                            <div class="dropdown">
+                              <button type="button" id="Leave" data-bs-toggle="dropdown" aria-expanded="false"
+                                class="buttonStyle">
+                                <i class="bi bi-caret-right-fill"></i> Leave Management
+                              </button>
+                              <ul class="dropdown-menu" aria-labelledby="Leave">
+                                <li><a class="dropdown-item" href="#">Leave Request</a></li>
+                                <li><a class="dropdown-item" href="#">Leave History</a></li>
+
+                              </ul>
+                            </div>
+
+                          </li>
+                          <li class="labelData mb-1">
+
+                            <div class="dropdown">
+                              <button type="button" id="Gatepass" data-bs-toggle="dropdown" aria-expanded="false"
+                                class="buttonStyle">
+                                <i class="bi bi-caret-right-fill"></i> Gatepass
+                              </button>
+                              <ul class="dropdown-menu" aria-labelledby="Gatepass">
+                                <li><a class="dropdown-item" href="#">Request</a></li>
+                                <li><a class="dropdown-item" href="#">History</a></li>
+
+                              </ul>
+                            </div>
+                          </li>
+                          <li class="labelData mb-1">
+
+                            <div class="dropdown">
+                              <button type="button" id="Punchslip" data-bs-toggle="dropdown" aria-expanded="false"
+                                class="buttonStyle">
+                                <i class="bi bi-caret-right-fill"></i> Punchslip
+                              </button>
+                              <ul class="dropdown-menu" aria-labelledby="Punchslip">
+                                <li><a class="dropdown-item" href="#">Request</a></li>
+                                <li><a class="dropdown-item" href="#">History</a></li>
+
+                              </ul>
+                            </div>
+
+                          </li>
+                          <li class="labelData m-1">
+                            <div style="color : black">
+                              Extension List
+                            </div>
+                          </li>
+                          <li class="labelData m-1">
+                            <div style="color : black">
+                              Posco
+                            </div>
+                          </li>
+                          <li class="labelData m-1">
+                            <div style="color : black">
+                              Machine Info
+                            </div>
+                          </li>
+                          <li class="labelData m-1">
+                            <div style="color : black">
+                              Code Review
+                            </div>
+                          </li>
+                          <li class="labelData mb-1">
+
+                            <div class="dropdown">
+                              <button type="button" id="Analyst" data-bs-toggle="dropdown" aria-expanded="false"
+                                class="buttonStyle">
+                                <i class="bi bi-caret-right-fill"></i> Analyst Request
+                              </button>
+                              <ul class="dropdown-menu" aria-labelledby="Analyst">
+                                <li><a class="dropdown-item" href="#">Pre Sales</a></li>
+                                <li><a class="dropdown-item" href="#">Post Sales</a></li>
+
+                              </ul>
+                            </div>
+                          </li>
+
+                        </ul>
+                      </div>
+
+                    </td>
+                  </tr>
+                </table>
+              </div>
+
+            </td>
+          </tr>
+          <tr>
+            <td style="width: 700px;" valign="top" align="center">
+              <a href="#">Home </a>|
+              <a href="#">Time Sheet</a> |
+              <a href="#"> Leave Request</a> |
+              <a href="#">Leave Approval</a> |
+              <a href="#"> Leave History</a> |
+              <a href="#"> Reports</a> |
+              <a href="#"> What's New</a>
+              <div class="mt-2 mb-4" style="font-weight:bold;">Version: 1.0</div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    </table>
+  </div>
+  <div class="col-sm-1"></div>
+</div>

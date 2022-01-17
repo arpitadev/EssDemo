@@ -1,0 +1,9 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+/* @import "~bootstrap/dist/css/bootstrap.css"; */
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+/* $fa-font-path : "~@fortawesome/fontawesome-free/webfonts"; */
+/* @import '../node_modules/@fortawesome/fontawesome-free/scss/fontawesome'; */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

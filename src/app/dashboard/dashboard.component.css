@@ -1,0 +1,105 @@
+.matCard {
+  max-width: fit-content;
+  align-content: center;
+  height: fit-content;
+  display: block;
+  border: 1px solid #000;
+}
+.verticalLine {
+  margin: 7px;
+  border-left: 1px solid rgb(133, 127, 127);
+  height: 15px;
+}
+
+.name {
+  padding: 0px;
+  padding-right: 1%;
+  height: fit-content;
+  border: 1px solid black;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.icon {
+  padding: 6px;
+  height: fit-content;
+  border: 1px solid black;
+  font-size: large;
+}
+
+.table-row {
+  height: fit-content;
+  display: block;
+  margin: auto;
+  padding: 0px;
+}
+.labelData {
+  list-style-type: none;
+  font-size: 0.99rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+}
+
+.buttonStyle{
+  background-color: transparent; 
+  border: 0;
+  padding: 0%; 
+  text-align: left;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.table-cell {
+  background-color:  #F0F0F0;
+  height: fit-content;
+  width: fit-content;
+  margin: 1px;
+  padding: 8px;
+  border: 1px solid  #A8A8A8;
+  
+}
+.table-data {
+  height: fit-content;
+  margin: 5px;
+  border: 1px solid rgb(0, 0, 0);
+}
+
+.ngx-pagination .disabled {
+  padding: 0.1875rem 0.625rem;
+  color: #004caf;
+  cursor: default;
+}
+
+.logo {
+  max-width: 70%;
+  height: fit-content;
+  display: block;
+}
+
+.inputWidth {
+  max-width: 100%;
+  margin-left: 50px;
+}
+
+.fontStyle {
+  font-weight: 550;
+  padding-left: 5px;
+  font-size: 15px;
+  color: #000;
+}
+
+.headCss{
+  font-weight: normal; font-size: medium;border: 1px solid rgb(30, 165, 199)
+}
+
+.font{
+  font-weight: normal; 
+  font-size: 14px;
+  padding: 5px;
+  vertical-align: middle;
+}
